@@ -3,8 +3,7 @@
 class DiceRollerService
   class << self
     def roll(count: 1, sides: 6, constant: 0, attempts: 1)
-      return 1 if input_valid?(count, sides, constant, attempts)
-      0
+      raise ArgumentError, 'Invalid Roll Input' unless input_valid?(count, sides, constant, attempts)
     end
 
     private
