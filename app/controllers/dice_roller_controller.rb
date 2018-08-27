@@ -3,7 +3,7 @@
 class DiceRollerController < ApplicationController
   def roll
     response = DiceRollerService.roll(roll_params)
-    if (response.is_a?(Array))
+    if response.is_a?(Array)
       render json: RollRepresenter.for_collection.new(response).to_json, status: 200
     else
       render json: RollRepresenter.new(response).to_json, status: 200

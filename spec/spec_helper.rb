@@ -17,7 +17,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'forwardable'
-require "rspec/json_expectations"
+require 'rspec/json_expectations'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

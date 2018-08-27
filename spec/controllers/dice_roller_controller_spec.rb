@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe DiceRollerController, type: :controller do
   describe 'GET /roll' do
-    let(:roll) { Roll.new(values: [4,2], constant: 1) }
-    let(:multi_roll) { [Roll.new(values: [4,2], constant: 1), Roll.new(values: [5,3], constant: 2)] }
+    let(:roll) { Roll.new(values: [4, 2], constant: 1) }
+    let(:multi_roll) { [Roll.new(values: [4, 2], constant: 1), Roll.new(values: [5, 3], constant: 2)] }
 
     it 'has json response type' do
       get :roll
