@@ -3,7 +3,11 @@
 class DiceRollerController < ApplicationController
   def roll
     response = DiceRollerService.roll(roll_params)
-    render json: response, status: 200
+    if (response.is_a?(Array))
+      render json: RollRepresenter.for_collection.new(response).to_json, status: 200
+    else
+      render json: RollRepresenter.new(response).to_json, status: 200
+    end
   end
 
   private
@@ -15,21 +19,5 @@ class DiceRollerController < ApplicationController
     p[:constant] = p[:constant].to_i if p[:constant]
     p[:attempts] = p[:attempts].to_i if p[:attempts]
     p
-  end
-
-  def count
-    params[:count]
-  end
-
-  def sides
-    params[:sides]
-  end
-
-  def constant
-    params[:constant]
-  end
-
-  def attempts
-    params[:attempts]
   end
 end
