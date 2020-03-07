@@ -1,5 +1,3 @@
-# gm-dice
-
 # Use
 
 ## Endpoints
