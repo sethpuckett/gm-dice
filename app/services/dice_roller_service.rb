@@ -8,7 +8,7 @@ class DiceRollerService
       constant: Settings.defaults.constant,
       attempts: Settings.defaults.attempts
     )
-      raise ArgumentError, 'Invalid Roll Input' unless input_valid?(count, sides, constant, attempts)
+      raise ArgumentError unless input_valid?(count, sides, constant, attempts)
 
       rolls = []
 
@@ -19,9 +19,19 @@ class DiceRollerService
       return rolls.first if rolls.length == 1
 
       rolls
+    rescue ArgumentError
+      log_error(count, sides, constant, attempts)
+      nil
     end
 
     private
+
+    def log_error(count, sides, constant, attempts)
+      Rails.logger.error(
+        "Invalid roll input. count: #{count}, sides: #{sides}, "\
+        "constant: #{constant}, attempts: #{attempts}"
+      )
+    end
 
     def input_valid?(count, sides, constant, attempts)
       count.between?(Settings.validation.min_count, Settings.validation.max_count) &&

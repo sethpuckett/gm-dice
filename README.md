@@ -74,3 +74,5 @@ This is equivalent to rolling a single six-sided die.
   }
 ]
 ```
+
+Passing invalid parameter values to the API will result in a `422 Unprocessable Entity` response.

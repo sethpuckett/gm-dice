@@ -2,11 +2,13 @@
 
 class DiceRollerController < ApplicationController
   def roll
-    response = DiceRollerService.roll(roll_params)
-    if response.is_a?(Array)
-      render json: RollRepresenter.for_collection.new(response).to_json, status: 200
+    result = DiceRollerService.roll(roll_params)
+    if result.blank?
+      render json: { message: 'Invalid parameters' }, status: 422
+    elsif result.is_a?(Array)
+      render json: RollRepresenter.for_collection.new(result).to_json, status: 200
     else
-      render json: RollRepresenter.new(response).to_json, status: 200
+      render json: RollRepresenter.new(result).to_json, status: 200
     end
   end
 
