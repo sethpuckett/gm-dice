@@ -1,0 +1,13 @@
+defaults:
+  count: 1
+  sides: 6
+  constant: 0
+  attempts: 1
+validation:
+  min_count: 1
+  max_count: 100
+  min_constant: -1_000_000
+  max_constant: 1_000_000
+  min_attempts: 1
+  max_attempts: 100
+  dice_sides: [4, 6, 8, 10, 12, 20, 100]

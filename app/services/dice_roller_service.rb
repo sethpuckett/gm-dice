@@ -2,7 +2,12 @@
 
 class DiceRollerService
   class << self
-    def roll(count: 1, sides: 6, constant: 0, attempts: 1)
+    def roll(
+      count: Settings.defaults.count,
+      sides: Settings.defaults.sides,
+      constant: Settings.defaults.constant,
+      attempts: Settings.defaults.attempts
+    )
       raise ArgumentError, 'Invalid Roll Input' unless input_valid?(count, sides, constant, attempts)
 
       rolls = []
@@ -12,20 +17,17 @@ class DiceRollerService
       end
 
       return rolls.first if rolls.length == 1
+
       rolls
     end
 
     private
 
     def input_valid?(count, sides, constant, attempts)
-      count.between?(1, 100) &&
-        constant.between?(-1_000_000, 1_000_000) &&
-        attempts.between?(1, 100) &&
-        valid_sides.include?(sides)
-    end
-
-    def valid_sides
-      [4, 6, 8, 10, 12, 20, 100]
+      count.between?(Settings.validation.min_count, Settings.validation.max_count) &&
+        constant.between?(Settings.validation.min_constant, Settings.validation.max_constant) &&
+        attempts.between?(Settings.validation.min_attempts, Settings.validation.max_attempts) &&
+        Settings.validation.dice_sides.include?(sides)
     end
 
     def calculate_attempt(count, sides, constant)
