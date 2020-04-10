@@ -1,4 +1,6 @@
-# Use
+# GM Tools: Dice API
+
+The Dice API is used to simulate dice rolls for roll playing games. It is part of the [GM Tools](https://github.com/sethpuckett/gm-tools-docker) suite of services. See that repository for setup instructions.
 
 ## Endpoints
 
@@ -21,14 +23,15 @@ All query string parameters are optional. These default values will be used if t
 
 This is equivalent to rolling a single six-sided die.
 
-### Response & Examples
+### Response Parameters
 
 - `total`: the sum total of the roll
 - `values`: the value of each individual die
 - `constant`: the constant value that was applied to the roll
 
-- 5d8
-  - `GET /dice/roll?count=5&sides=8`
+### Examples
+
+- 5d8: `GET /dice/roll?count=5&sides=8`
 ```
 {
   "total": 27,
@@ -42,8 +45,7 @@ This is equivalent to rolling a single six-sided die.
   "constant": 0
 }
 ```
-- 2d6 + 5
-  - `GET /dice/roll?count=2&sides=6&constant=5`
+- 2d6 + 5: `GET /dice/roll?count=2&sides=6&constant=5`
 ```
 {
   "total": 16,
@@ -54,8 +56,7 @@ This is equivalent to rolling a single six-sided die.
   "constant": 5
 }
 ```
-- 1d20 with advantage
-  - `GET /dice/roll?count=1&sides=20&attempts=2`
+- 1d20 with advantage: `GET /dice/roll?count=1&sides=20&attempts=2`
 ```
 [
   {
