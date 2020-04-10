@@ -3,7 +3,7 @@ default: &default
   encoding: unicode
   host: dice-db
   username: postgres
-  password:
+  password: postgres
   pool: 5
 
 development:
