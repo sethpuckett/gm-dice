@@ -4,7 +4,7 @@ The Dice API is used to simulate dice rolls for roll playing games. It is part o
 
 ## Endpoints
 
-- `GET /dice/roll`
+- `GET /dice/roll`: Roll the dice
 
 ### Query string parameters
 
