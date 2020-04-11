@@ -23,7 +23,7 @@ All query string parameters are optional. These default values will be used if t
 
 This is equivalent to rolling a single six-sided die.
 
-### Response Parameters
+### Response Attributes
 
 - `total`: the sum total of the roll
 - `values`: the value of each individual die
